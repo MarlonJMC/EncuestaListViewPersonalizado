@@ -21,17 +21,43 @@ public class DatosPersonales extends AppCompatActivity implements View.OnClickLi
     Encuesta primerosDatos;
     EditText edtEdad;
     EditText edtUbicacion;
+    RadioButton rbM;
+    RadioButton rbF;
+    RadioButton rbO;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_datos_personales);
         txtNoEncuesta=findViewById(R.id.noEncuesta);
-        txtNoEncuesta.setText("No. Encuesta: "+MainActivity.ListaEncuestas.size()+1);
+        txtNoEncuesta.setText("No. Encuesta: "+(MainActivity.ListaEncuestas.size()+1));
         edtEdad=findViewById(R.id.Edad);
         edtUbicacion=findViewById(R.id.Ubicacion);
         primerosDatos=new Encuesta();
+        rbM=findViewById(R.id.RbMasculino);
+        rbF=findViewById(R.id.RbFemenino);
+        rbO=findViewById(R.id.RbOtro);
+        if(MainActivity.EncuestaActual!=null){
+            CargarDatosAnteriores();
+        }
     }
+
+    private void CargarDatosAnteriores(){
+        edtEdad.setText(MainActivity.EncuestaActual.getEdad());
+        edtUbicacion.setText(MainActivity.EncuestaActual.getUbicacion());
+        String Genero=MainActivity.EncuestaActual.getGenero();
+        if(Genero.equals("Masculino")){
+            this.rbM.setChecked(true);
+        }else{
+            if(Genero.equals("Femenino")){
+                this.rbF.setChecked(true);
+            }else{
+                this.rbO.setChecked(true);
+            }
+        }
+    }
+
 
     @Override
     public void onClick(View view){
@@ -58,9 +84,6 @@ public class DatosPersonales extends AppCompatActivity implements View.OnClickLi
 
     private boolean DatosSonValidos(){
         boolean valido=false;
-        RadioButton rbM=findViewById(R.id.RbMasculino);
-        RadioButton rbF=findViewById(R.id.RbFemenino);
-        RadioButton rbO=findViewById(R.id.RbOtro);
         if(edtEdad.getText().toString().length()>0 && edtUbicacion.getText().toString().length()>0){
             if(rbF.isChecked() || rbM.isChecked() || rbO.isChecked()){
                 valido=true;

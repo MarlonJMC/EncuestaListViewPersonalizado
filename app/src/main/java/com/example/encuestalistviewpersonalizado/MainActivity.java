@@ -11,16 +11,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Entidades.Encuesta;
+import Entidades.Resultados;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     public static List<Encuesta>ListaEncuestas;
+    public static Encuesta EncuestaActual;
+    public static List<Resultados> ListaResultados;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ListaEncuestas=new ArrayList<Encuesta>();
+        ListaResultados=new ArrayList<Resultados>();
+        EncuestaActual=null;
     }
 
     @Override
@@ -41,9 +46,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
             }break;
             case R.id.btnDetalles:{
+                if(ListaEncuestas.size()>0){
                 Intent intentoDetalles=new Intent();
                 intentoDetalles.setClass(this,DetallesActivity.class);
                 startActivity(intentoDetalles);
+                }else{
+                    Toast.makeText(this,"Lista vacía...Realice encuestas para poder ver los detalles",Toast.LENGTH_LONG).show();
+                }
             }break;
         }
     }

@@ -29,15 +29,14 @@ public class CategoriasComidas extends AppCompatActivity  implements View.OnClic
 
 
     @Override
-    public void onClick(View view) {
-
+    public void onClick(View view){
         Bundle bundleEncuesta=new Bundle();
-        bundleEncuesta.putSerializable("Encuesta",encuestaRecibida);
-
         switch (view.getId()){
             case R.id.LaTipicos:{
                 Intent intento1 = new Intent();
-                intento1.putExtra("Categoria","Tipicos");
+                intento1.putExtra("Categoria","COMIDA TIPICA");
+                this.encuestaRecibida.setCategoria("COMIDA TIPICA");
+                bundleEncuesta.putSerializable("Encuesta",encuestaRecibida);
                 intento1.putExtras(bundleEncuesta);
                 intento1.setClass(CategoriasComidas.this,SeleccionComida.class);
                 intento1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -47,7 +46,9 @@ public class CategoriasComidas extends AppCompatActivity  implements View.OnClic
 
             case R.id.LaMariscos:{
                 Intent intento2 = new Intent();
-                intento2.putExtra("Categoria","Mariscos");
+                intento2.putExtra("Categoria","MARISCOS");
+                this.encuestaRecibida.setCategoria("MARISCOS");
+                bundleEncuesta.putSerializable("Encuesta",encuestaRecibida);
                 intento2.putExtras(bundleEncuesta);
                 intento2.setClass(CategoriasComidas.this,SeleccionComida.class);
                 intento2.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -57,14 +58,15 @@ public class CategoriasComidas extends AppCompatActivity  implements View.OnClic
 
             case R.id.LaRapida:{
                 Intent intento3 = new Intent();
-                intento3.putExtra("Categoria","Rapida");
+                intento3.putExtra("Categoria","COMIDA RAPIDA");
+                this.encuestaRecibida.setCategoria("COMIDA RAPIDA");
+                bundleEncuesta.putSerializable("Encuesta",encuestaRecibida);
                 intento3.putExtras(bundleEncuesta);
                 intento3.setClass(CategoriasComidas.this,SeleccionComida.class);
                 intento3.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intento3);
                 finish();
             }break;
-
         }
     }
 }

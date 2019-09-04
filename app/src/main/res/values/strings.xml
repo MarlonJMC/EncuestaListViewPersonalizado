@@ -2,6 +2,7 @@
     <string name="app_name">EncuestaListViewPersonalizado</string>
     <string name="app_name2">Encuesta: "Comida preferida" </string>
     <string name="btnDatos"> Encuestar </string>
+    <string name="btnFinal"> Guardar encuesta </string>
     <string name="btnProcesar">Procesar Resultados </string>
     <string name="DetallesEncuestados">Detalles de encuestas</string>
     <string name="txtGenero">Seleccione genero: </string>
@@ -9,8 +10,8 @@
     <string name="hintEdad">edad </string>
     <string name="txtUbicacion">Ingrese Ubicacion: </string>
     <string name="hintUbicacion">Posición geografica </string>
-    <string name="btnDatosPersonales">Siguiente </string>
-    <string name="tituloCategoria">Categorias de comida: seleccione</string>
+    <string name="btnDatosPersonales">Siguiente -></string>
+    <string name="tituloCategoria">Categorias de comida:</string>
     <string name="CatTipico">TIPICA SALVADOREÑA</string>
     <string name="CapMariscos">MARISCOS</string>
     <string name="CapRapida">COMIDA RAPIDA</string>

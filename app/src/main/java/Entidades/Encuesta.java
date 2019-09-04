@@ -9,10 +9,15 @@ public class Encuesta implements Serializable {
     private String edad;
     private String Comida;
     private String Ubicacion;
-    private ArrayList<String>comidasSeleccionadas;
+    private String Categoria;
+
 
     public Encuesta(){
-
+        this.genero="";
+        this.edad="";
+        this.Ubicacion="";
+        this.Categoria="";
+        this.Comida="";
     }
 
     public Encuesta(String gene,String edad,String ubicacion){
@@ -24,8 +29,15 @@ public class Encuesta implements Serializable {
     public Encuesta(String gene,String edad,ArrayList comidasSeleccionado,String ubicacion){
         this.genero=gene;
         this.edad=edad;
-        this.comidasSeleccionadas=comidasSeleccionado;
         this.Ubicacion=ubicacion;
+    }
+
+    public String getCategoria() {
+        return Categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        Categoria = categoria;
     }
 
     public String getUbicacion() {
@@ -60,11 +72,4 @@ public class Encuesta implements Serializable {
         Comida = comida;
     }
 
-    public ArrayList<String> getComidasSeleccionadas() {
-        return comidasSeleccionadas;
-    }
-
-    public void setComidasSeleccionadas(ArrayList<String> comidasSeleccionadas) {
-        this.comidasSeleccionadas = comidasSeleccionadas;
-    }
 }

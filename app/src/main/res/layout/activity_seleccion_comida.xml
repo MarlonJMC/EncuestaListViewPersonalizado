@@ -16,14 +16,13 @@
         android:layout_gravity="top"
         android:layout_marginTop="10dp"
         android:textAlignment="center"
-        android:textSize="22sp"
+        android:textSize="24sp"
         android:textColor="@color/colorPrimaryDark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         />
-
     <ListView
         android:id="@+id/ListViewSeleccion"
         android:layout_width="match_parent"
@@ -36,15 +35,14 @@
         android:layout_height="wrap_content"
         android:layout_gravity="top"
         android:layout_marginTop="10dp"
+        android:text="Selección:"
         android:textAlignment="center"
-        android:textSize="20sp"
-        android:text="Has eledigo:"
         android:textColor="@color/colorPrimaryDark"
+        android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnDatos"
@@ -53,14 +51,11 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
-        android:text="@string/btnDatos"
+        android:text="@string/btnFinal"
         android:layout_marginRight="20dp"
         android:gravity="center"
         android:onClick="onClick"
         android:background="@color/colorFondo1"
         android:textColor="@color/colorFondoLetra"
         android:textSize="20sp" />
-
-
-
 </LinearLayout>

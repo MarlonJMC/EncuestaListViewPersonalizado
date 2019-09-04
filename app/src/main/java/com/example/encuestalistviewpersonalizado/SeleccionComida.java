@@ -1,12 +1,15 @@
 package com.example.encuestalistviewpersonalizado;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -49,24 +52,24 @@ public class SeleccionComida extends AppCompatActivity implements View.OnClickLi
 
     private void LLenarPosiblesSelecciones(String Categoria){
         switch (Categoria){
-            case "Rapida":{
+            case "COMIDA RAPIDA":{
                 this.PosiblesSelecciones.add("Pizza");
                 this.PosiblesSelecciones.add("Alitas Buffalo");
                 this.PosiblesSelecciones.add("Hamburguesas");
                 this.PosiblesSelecciones.add("Subway");
             }break;
 
-            case "Tipicos":{
+            case "COMIDA TIPICA":{
                 this.PosiblesSelecciones.add("Pupusas");
                 this.PosiblesSelecciones.add("Yuca Frita");
                 this.PosiblesSelecciones.add("Pasteles de papa");
                 this.PosiblesSelecciones.add("Sopa de patas");
             }break;
 
-            case "Mariscos":{
-                this.PosiblesSelecciones.add("Marisacada levanta muertos");
+            case "MARISCOS":{
+                this.PosiblesSelecciones.add("Mariscada de bolos");
                 this.PosiblesSelecciones.add("Camarones al ajillo");
-                this.PosiblesSelecciones.add("Variendad de Cocteles");
+                this.PosiblesSelecciones.add("Cocteles");
                 this.PosiblesSelecciones.add("Pescado frito");
             }break;
 
@@ -86,7 +89,26 @@ public class SeleccionComida extends AppCompatActivity implements View.OnClickLi
     public void onClick(View view){
         FinalEncuestaObject.setComida(PosiblesSelecciones.get(PosSeleccionActual).toString());
         MainActivity.ListaEncuestas.add(FinalEncuestaObject);
-        finish();
+
+        AlertDialog.Builder Abuilder= new AlertDialog.Builder(SeleccionComida.this);
+        Abuilder.setTitle("Datos almacenados con éxito");
+        Abuilder.setMessage("¿Desea Mantener sus datos ingresados para realizar otra encuesta a continuación ?");
+        Abuilder.setPositiveButton("Si", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which){
+                FinalEncuestaObject.setComida("");
+                MainActivity.EncuestaActual=FinalEncuestaObject;
+                finish();
+            }
+        });
+        Abuilder.setNegativeButton("NO", new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                  MainActivity.EncuestaActual=null;
+                  finish();
+            }
+        });
+        Abuilder.show();
     }
 
     @Override
