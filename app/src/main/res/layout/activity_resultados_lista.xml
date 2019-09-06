@@ -9,10 +9,11 @@
     tools:context=".ResultadosLista">
 
     <TextView
-        android:id="@+id/Titulo"
+        android:id="@+id/CantResultados"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="top"
+        android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
         android:textAlignment="center"
         android:textSize="24sp"
@@ -26,7 +27,7 @@
 
     <ListView
         android:id="@+id/ListViewResultados"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="433dp"/>
 
     <TextView
@@ -35,17 +36,16 @@
         android:layout_height="wrap_content"
         android:layout_gravity="top"
         android:layout_marginTop="10dp"
-        android:text="Selección:"
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
-        android:textSize="22sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btnAceptar"
+        android:id="@+id/btnAceptarResultados"
         style="@style/TextAppearance.AppCompat.Display2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

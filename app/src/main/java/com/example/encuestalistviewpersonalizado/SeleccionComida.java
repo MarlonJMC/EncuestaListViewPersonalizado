@@ -30,7 +30,7 @@ public class SeleccionComida extends AppCompatActivity implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seleccion_comida);
-        PosSeleccionActual=0;
+        PosSeleccionActual=-1;
         titulo=findViewById(R.id.Titulo);
         Seleccion=findViewById(R.id.Seleccionado);
         PosiblesSelecciones=new ArrayList<String>();
@@ -41,7 +41,7 @@ public class SeleccionComida extends AppCompatActivity implements View.OnClickLi
         listView=findViewById( R.id.ListViewSeleccion);
         listView.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,PosiblesSelecciones));
         listView.setOnItemClickListener(this);
-        listView.deferNotifyDataSetChanged();
+//        listView.deferNotifyDataSetChanged();
 
         Bundle objetoRecibido=getIntent().getExtras();//Recibo Objeto encuesta desde la anterior
         FinalEncuestaObject=null;
@@ -73,7 +73,7 @@ public class SeleccionComida extends AppCompatActivity implements View.OnClickLi
                 this.PosiblesSelecciones.add("Pescado frito");
             }break;
 
-            default:{//Tipicos
+            default:{//Tipicos por defecto
                 this.PosiblesSelecciones.add("Pupusas");
                 this.PosiblesSelecciones.add("Yuca Frita");
                 this.PosiblesSelecciones.add("Pasteles de papa");
@@ -83,28 +83,37 @@ public class SeleccionComida extends AppCompatActivity implements View.OnClickLi
         }
     }
 
-
-
     @Override
     public void onClick(View view){
-        FinalEncuestaObject.setComida(PosiblesSelecciones.get(PosSeleccionActual).toString());
-        MainActivity.ListaEncuestas.add(FinalEncuestaObject);
 
         AlertDialog.Builder Abuilder= new AlertDialog.Builder(SeleccionComida.this);
         Abuilder.setTitle("Datos almacenados con éxito");
         Abuilder.setMessage("¿Desea Mantener sus datos ingresados para realizar otra encuesta a continuación ?");
-        Abuilder.setPositiveButton("Si", new DialogInterface.OnClickListener() {
+        Abuilder.setPositiveButton("Si", new DialogInterface.OnClickListener(){
             @Override
             public void onClick(DialogInterface dialog, int which){
-                FinalEncuestaObject.setComida("");
-                MainActivity.EncuestaActual=FinalEncuestaObject;
+                FinalEncuestaObject.setComida(PosiblesSelecciones.get(PosSeleccionActual).toString());
+//                MainActivity.ListaEncuestas;
+                MainActivity.nuevoEncuestaActual();
+                MainActivity.ListaEncuestas.add(FinalEncuestaObject);
+                MainActivity.EncuestaActual.setEdad(FinalEncuestaObject.getEdad());
+                MainActivity.EncuestaActual.setGenero(FinalEncuestaObject.getGenero());
+                MainActivity.EncuestaActual.setUbicacion(FinalEncuestaObject.getUbicacion());
+//                Encuesta tem=FinalEncuestaObject;
+//                MainActivity.EncuestaActual=FinalEncuestaObject;
+//              tem.setComida("");
+//                MainActivity.EncuestaActual=tem;
+//                FinalEncuestaObject.setComida("");
                 finish();
             }
         });
+
         Abuilder.setNegativeButton("NO", new DialogInterface.OnClickListener(){
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                  MainActivity.EncuestaActual=null;
+                FinalEncuestaObject.setComida(PosiblesSelecciones.get(PosSeleccionActual).toString());
+                MainActivity.ListaEncuestas.add(FinalEncuestaObject);
+                MainActivity.EncuestaActual=null;
                   finish();
             }
         });
@@ -112,8 +121,8 @@ public class SeleccionComida extends AppCompatActivity implements View.OnClickLi
     }
 
     @Override
-    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        PosSeleccionActual=i;
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l){
+        this.PosSeleccionActual=i;
         this.Seleccion.setText("Has seleccionado: "+PosiblesSelecciones.get(i).toString());
     }
 }

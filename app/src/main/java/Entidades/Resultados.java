@@ -10,7 +10,6 @@ public class Resultados {
     public int cantidadUsuarios;
     public List<String>EdadesUsuarios;
     public List<String>Lugares;
-
     private int cM,cF,cO;
 
     public Resultados(){
@@ -79,15 +78,15 @@ public class Resultados {
     public String DevolverLugares(){
         String resultado="";
             for(int i=0;i<Lugares.size();i++){
-                resultado+=(Lugares.get(i).toString()+",");
+                resultado+=(Lugares.get(i)+",");
             }
-            resultado=resultado.substring(0,resultado.length()-1);
+//            resultado=resultado.substring(0,resultado.length()-1);
         return resultado;
     }
 
     public void AgregarLugar(String lugar){
         try {
-            if(this.Lugares.indexOf(lugar)!=-1){
+            if(this.Lugares.indexOf(lugar)>1){
                 Lugares.add(lugar);
             }
         }catch (Exception e){
@@ -96,7 +95,7 @@ public class Resultados {
 
     public void AgregarEdadAlaLista(String edad){
         try {
-            if(this.EdadesUsuarios.indexOf(edad)!=-1){
+            if(this.EdadesUsuarios.indexOf(edad)>-1){
                 EdadesUsuarios.add(edad);
             }
         }catch (Exception e){

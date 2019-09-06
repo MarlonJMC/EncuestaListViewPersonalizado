@@ -25,7 +25,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         ListaEncuestas=new ArrayList<Encuesta>();
         ListaResultados=new ArrayList<Resultados>();
-        EncuestaActual=null;
+        EncuestaActual=new Encuesta();
+    }
+
+    public static void nuevoEncuestaActual(){
+        EncuestaActual=new Encuesta();
     }
 
     @Override
